@@ -20,6 +20,7 @@ namespace TestNinja.Mocking
             _repository = repository ?? new VideoRepository();
 
         }
+
         public string ReadVideoTitle()
         {
             var str = _fileReader.Read("video.txt");
