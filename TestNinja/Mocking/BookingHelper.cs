@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace TestNinja.Mocking
 {
-    public static class BookingHelper 
+    public static class BookingHelper
     {
         public static string OverlappingBookingsExist(Booking booking, IBookingRepository repository)
         {
@@ -12,12 +12,12 @@ namespace TestNinja.Mocking
                 return string.Empty;
 
             var bookings = repository.GetActiveBookings(booking.Id);
+            
             var overlappingBooking =
-                bookings.FirstOrDefault(
-                    b =>
+                bookings.FirstOrDefault(b =>
                         booking.ArrivalDate < b.DepartureDate &&
                         b.ArrivalDate < booking.DepartureDate);
-                        
+
 
             return overlappingBooking == null ? string.Empty : overlappingBooking.Reference;
         }
